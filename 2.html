@@ -1,0 +1,522 @@
+好的，沒有問題。我將以 C/C++ 專家的角度，為您強化這份教材，移除測驗題目，並加入更豐富的說明與可互動的程式碼範例。
+
+新的網頁將有以下特色：
+
+  * **內容深化**：針對每個觀念，我會補充更多 C/C++ 開發上重要的細節與最佳實踐。
+  * **互動式程式碼範例**：每個觀念都會附上「顯示範例」按鈕，點擊後才會展開完整的程式碼區塊及其預期執行結果，讓學習更有探索感。
+  * **清晰的版面**：移除測驗區塊，讓版面完全聚焦於教學內容，閱讀體驗更流暢。
+
+您可以像上次一樣，將下方的完整 HTML 程式碼複製並儲存為 `.html` 檔案，即可在瀏覽器中開啟使用。
+
+-----
+
+以下是完整的 HTML 程式碼：
+
+```html
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C/C++ 專家強化教程 - 第二章：變數、常數與資料型態</title>
+    <style>
+        body { font-family: 'Helvetica Neue', 'Segoe UI', 'Microsoft JhengHei', sans-serif; line-height: 1.8; margin: 0; padding: 0; background-color: #f8f9fa; color: #212529; }
+        .container { max-width: 960px; margin: 25px auto; padding: 25px; background-color: #ffffff; border-radius: 12px; box-shadow: 0 6px 12px rgba(0,0,0,0.08); }
+        h1, h2, h3 { color: #005f73; border-bottom: 3px solid #0a9396; padding-bottom: 12px; }
+        h1 { text-align: center; font-size: 2.8em; border: none; }
+        h2 { font-size: 2.2em; margin-top: 45px; }
+        h3 { font-size: 1.6em; border-bottom: none; color: #0077b6; margin-top: 30px;}
+        .toc { background-color: #e9f5ff; padding: 20px 30px; border-left: 6px solid #007bff; border-radius: 8px; margin: 30px 0; }
+        .toc ul { list-style-type: none; padding-left: 0; }
+        .toc a { text-decoration: none; color: #023e8a; font-weight: bold; font-size: 1.1em; }
+        .toc a:hover { text-decoration: underline; color: #007bff; }
+        table { border-collapse: collapse; width: 100%; margin: 25px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        th, td { border: 1px solid #dee2e6; padding: 14px; text-align: left; }
+        th { background-color: #007bff; color: white; font-size: 1.1em; }
+        tr:nth-child(even) { background-color: #f8f9fa; }
+        .code-example-container { margin: 25px 0; }
+        .toggle-btn { background-color: #0077b6; color: white; padding: 10px 18px; border: none; border-radius: 5px; cursor: pointer; font-size: 1em; font-weight: bold; transition: background-color 0.3s; }
+        .toggle-btn:hover { background-color: #023e8a; }
+        .code-content { display: none; margin-top: 15px; border-left: 4px solid #007bff; padding-left: 20px; }
+        .code-block { background-color: #282c34; color: #abb2bf; padding: 20px; border-radius: 8px; margin: 15px 0; position: relative; overflow-x: auto; font-family: 'Fira Code', 'Consolas', monospace; font-size: 0.95em; }
+        .code-block .copy-btn { position: absolute; top: 12px; right: 12px; background-color: #61afef; color: #282c34; border: none; padding: 6px 12px; border-radius: 5px; cursor: pointer; transition: background-color 0.2s; }
+        .code-block .copy-btn:hover { background-color: #c678dd; }
+        .code-comment { color: #5c6370; font-style: italic; }
+        .code-output { background-color: #f1f3f5; color: #212529; border: 1px dashed #adb5bd; padding: 15px; border-radius: 8px; font-family: 'Courier New', Courier, monospace; white-space: pre-wrap; }
+        .emphasis { color: #d90429; font-weight: bold; }
+        .highlight { background-color: #fff3cd; padding: 2px 6px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>C/C++ 專家強化教程</h1>
+        <h2>第二章：變數、常數與資料型態</h2>
+
+        <div class="toc">
+            <h3>本章節點</h3>
+            <ul>
+                <li><a href="#section-2-1">2-1 資料型態 (Data Types)</a></li>
+                <li><a href="#section-2-2">2-2 變數與常數宣告 (Variable & Constant Declaration)</a></li>
+                <li><a href="#section-2-3">2-3 基本輸入/輸出 (Basic I/O)</a></li>
+            </ul>
+        </div>
+
+        <hr>
+
+        <section id="section-2-1">
+            <h2>2-1 資料型態 (Data Types)</h2>
+            <h3>核心觀念</h3>
+            <p>在程式語言中，<span class="highlight">資料型態</span>是用來告訴編譯器 (Compiler) 某個資料是什麼種類、該如何詮釋它，以及該配置多少記憶體空間給它。選對資料型態是寫出高效且正確程式的第一步。</p>
+            
+            <h3>(1) 整數型態 (Integer Types)</h3>
+            <p>用於表示沒有小數點的數字。C/C++ 提供了多種整數型態以應對不同的大小需求。</p>
+            <table>
+                <thead>
+                    <tr><th>資料型態</th><th>說明</th><th>常見記憶空間</th><th>能表示的資料範圍</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>short</td><td>短整數</td><td>2 bytes</td><td>-32768 ~ 32767</td></tr>
+                    <tr><td><span class="emphasis">unsigned</span> short</td><td>無號短整數</td><td>2 bytes</td><td>0 ~ 65535</td></tr>
+                    <tr><td>int</td><td>整數 (最常用)</td><td>4 bytes</td><td>-2,147,483,648 ~ 2,147,483,647</td></tr>
+                    <tr><td><span class="emphasis">unsigned</span> int</td><td>無號整數</td><td>4 bytes</td><td>0 ~ 4,294,967,295</td></tr>
+                    <tr><td>long</td><td>長整數</td><td>4 bytes (或 8 bytes)</td><td>視系統而定</td></tr>
+                    <tr><td>long long</td><td>長長整數 (C++11)</td><td>8 bytes</td><td>約 -9 x 10<sup>18</sup> ~ 9 x 10<sup>18</sup></td></tr>
+                </tbody>
+            </table>
+            <p><span class="highlight">專家提示</span>：`unsigned` 關鍵字代表「無號」，表示該變數只能儲存 0 和正整數。這會將原本用來表示負數的空間全部用來表示正數，使其能儲存的正整數範圍加倍。當你確定一個變數絕不會是負數時（如：年齡、計數器），使用 `unsigned` 是個好習慣。</p>
+
+            <div class="code-example-container">
+                <button class="toggle-btn" onclick="toggleCode('ex1')">顯示範例：整數溢位 (Integer Overflow)</button>
+                <div id="ex1" class="code-content">
+                    <p>當賦予一個變數的值超過其資料型態能表示的最大範圍時，就會發生「溢位」。`unsigned` 型態會像時鐘一樣從 0 重新開始，而有號型態的行為在 C/C++ 標準中是「未定義行為」，可能導致不可預期的結果。</p>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">複製</button>
+                        <code>
+#include &lt;stdio.h&gt;
+#include &lt;limits.h&gt; <span class="code-comment">// 引入了定義整數極限值的標頭檔</span>
+
+int main() {
+    unsigned int max_uint = UINT_MAX; <span class="code-comment">// UINT_MAX 是 unsigned int 的最大值</span>
+    
+    printf("Unsigned int 的最大值: %u\n", max_uint);
+    printf("最大值 + 1 = %u\n", max_uint + 1); <span class="code-comment">// 發生溢位，回到 0</span>
+
+    short max_short = SHRT_MAX; <span class="code-comment">// SHRT_MAX 是 short 的最大值, 32767</span>
+    printf("\nShort 的最大值: %d\n", max_short);
+    printf("最大值 + 1 = %d\n", max_short + 1); <span class="code-comment">// 有號整數溢位是未定義行為</span>
+
+    return 0;
+}
+                        </code>
+                    </div>
+                    <h4>執行結果</h4>
+                    <div class="code-output">
+Unsigned int 的最大值: 4294967295
+最大值 + 1 = 0
+
+Short 的最大值: 32767
+最大值 + 1 = -32768  (註：此為常見編譯器的行為，但非標準保證)
+                    </div>
+                </div>
+            </div>
+
+            <h3>(2) 浮點數型態 (Floating-Point Types)</h3>
+            <p>用於表示有小數點的數字，或稱為「實數」。</p>
+            <table>
+                 <thead>
+                    <tr><th>資料型態</th><th>說明</th><th>常見記憶空間</th><th>精確度</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>float</td><td>單精度浮點數</td><td>4 bytes</td><td>約 7 位有效數字</td></tr>
+                    <tr><td>double</td><td>雙精度浮點數</td><td>8 bytes</td><td>約 15-17 位有效數字</td></tr>
+                </tbody>
+            </table>
+             <p><span class="highlight">專家提示</span>：由於 `float` 的精確度有限，在需要高精度計算的場合（如科學、金融）應優先使用 `double`。在 C/C++ 中，直接寫下的小數（如 `3.14`）預設被視為 `double` 型態。</p>
+
+             <div class="code-example-container">
+                <button class="toggle-btn" onclick="toggleCode('ex2')">顯示範例：float vs double 精確度差異</button>
+                <div id="ex2" class="code-content">
+                    <p>這個範例展示了為何在高精度要求下 `double` 是更好的選擇。</p>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">複製</button>
+                        <code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    float a_float = 1.0 / 3.0;
+    double a_double = 1.0 / 3.0;
+
+    printf("--- 顯示到小數點後 7 位 ---\n");
+    printf("Float:  %.7f\n", a_float);
+    printf("Double: %.7f\n", a_double);
+
+    printf("\n--- 顯示到小數點後 15 位 ---\n");
+    printf("Float:  %.15f\n", a_float);   <span class="code-comment">// 超出 float 精確度範圍，後面數字不準確</span>
+    printf("Double: %.15f\n", a_double);  <span class="code-comment">// double 仍然很精確</span>
+
+    return 0;
+}
+                        </code>
+                    </div>
+                    <h4>執行結果</h4>
+                    <div class="code-output">
+--- 顯示到小數點後 7 位 ---
+Float:  0.3333333
+Double: 0.3333333
+
+--- 顯示到小數點後 15 位 ---
+Float:  0.333333343267441
+Double: 0.333333333333333
+                    </div>
+                </div>
+            </div>
+
+            <h3>(3) 字元型態 (Character Type)</h3>
+            <p>`char` 型態用來儲存單一字元，如 'A', 'g', '!'。事實上，它在底層是以一個小的整數 (通常是 ASCII 編碼) 來儲存的。</p>
+            <table>
+                <thead>
+                    <tr><th>資料型態</th><th>常見記憶空間</th><th>儲存內容</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>char</td><td>1 byte</td><td>單一字元或 -128 ~ 127 的小整數</td></tr>
+                </tbody>
+            </table>
+
+            <h3>(4) 字串 (Strings)</h3>
+            <p>字串是多個字元的序列。在 C 和 C++ 中處理字串的方式有很大不同：</p>
+            <ul>
+                <li><span class="highlight">C 風格字串</span>：本質上是一個以<span class="emphasis">空字元 `\0`</span> 結尾的 `char` 陣列。操作上較為繁瑣且容易出錯。</li>
+                <li><span class="highlight">C++ `std::string`</span>：一個功能強大且安全的類別 (Class)，需要 `#include <string>`。它會自動管理記憶體，是現代 C++ 的首選。</li>
+            </ul>
+
+            <div class="code-example-container">
+                <button class="toggle-btn" onclick="toggleCode('ex3')">顯示範例：C 風格字串 vs C++ string</button>
+                <div id="ex3" class="code-content">
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">複製</button>
+                        <code>
+<span class="code-comment">// C++ 程式，同時展示兩種風格</span>
+#include &lt;iostream&gt;
+#include &lt;string&gt;   <span class="code-comment">// 使用 std::string 需要此標頭檔</span>
+#include &lt;cstring&gt;  <span class="code-comment">// 使用 C 風格字串函數 (如 strcpy) 需要此標頭檔</span>
+
+int main() {
+    <span class="code-comment">// --- C 風格字串 ---</span>
+    char c_str1[20] = "Hello"; <span class="code-comment">// 宣告一個長度為 20 的 char 陣列</span>
+    char c_str2[20];
+    
+    strcpy(c_str2, ", World!"); <span class="code-comment">// 必須使用安全的函式來複製</span>
+    strcat(c_str1, c_str2);     <span class="code-comment">// 將 c_str2 串接到 c_str1 後面</span>
+    
+    std::cout &lt;&lt; "C-Style String: " &lt;&lt; c_str1 &lt;&lt; std::endl;
+    std::cout &lt;&lt; "長度 (strlen): " &lt;&lt; strlen(c_str1) &lt;&lt; std::endl;
+
+    <span class="code-comment">// --- C++ std::string ---</span>
+    std::string cpp_str1 = "Hello";
+    std::string cpp_str2 = ", C++!";
+    
+    std::string result = cpp_str1 + cpp_str2; <span class="code-comment">// 直接用 + 號就可以串接，非常直觀</span>
+    
+    std::cout &lt;&lt; "\nC++ String: " &lt;&lt; result &lt;&lt; std::endl;
+    std::cout &lt;&lt; "長度 (length()): " &lt;&lt; result.length() &lt;&lt; std::endl;
+
+    return 0;
+}
+                        </code>
+                    </div>
+                    <h4>執行結果</h4>
+                    <div class="code-output">
+C-Style String: Hello, World!
+長度 (strlen): 13
+
+C++ String: Hello, C++!
+長度 (length()): 11
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <hr>
+
+        <section id="section-2-2">
+            <h2>2-2 變數與常數宣告</h2>
+            <h3>變數 (Variable)</h3>
+            <p>變數是程式中用來儲存資料的具名記憶體位置，其值可以在程式執行過程中改變。</p>
+            <h4>變數命名規則</h4>
+            <ul>
+                <li>只能使用英文字母 (a-z, A-Z)、數字 (0-9) 和底線 (_)。</li>
+                <li><span class="emphasis">不</span>可以數字開頭。</li>
+                <li>大小寫有別 (`myVar` 和 `myvar` 是不同變數)。</li>
+                <li><span class="emphasis">不</span>可以使用 C/C++ 的關鍵字 (如 `int`, `if`, `return`)。</li>
+            </ul>
+
+            <h3>變數作用域 (Scope)</h3>
+            <p>作用域決定了變數的「可見範圍」與「生命週期」。</p>
+            <ul>
+                <li><span class="highlight">區域變數 (Local Variable)</span>：在函式或 `{}` 程式區塊內宣告，只能在該區塊內使用。離開區塊後，其記憶體會被釋放。</li>
+                <li><span class="highlight">全域變數 (Global Variable)</span>：在所有函式之外宣告，程式的任何地方都可以存取。應謹慎使用，因為它會增加程式的複雜度和出錯風險。</li>
+            </ul>
+
+            <div class="code-example-container">
+                <button class="toggle-btn" onclick="toggleCode('ex4')">顯示範例：區域變數 vs 全域變數</button>
+                <div id="ex4" class="code-content">
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">複製</button>
+                        <code>
+#include &lt;iostream&gt;
+
+int global_var = 100; <span class="code-comment">// 這是一個全域變數</span>
+
+void myFunction() {
+    int local_var = 20; <span class="code-comment">// 這是一個區域變數，只存在於 myFunction 中</span>
+    std::cout &lt;&lt; "在函式內，local_var = " &lt;&lt; local_var &lt;&lt; std::endl;
+    std::cout &lt;&lt; "在函式內，global_var = " &lt;&lt; global_var &lt;&lt; std::endl;
+    global_var = 50; <span class="code-comment">// 函式可以修改全域變數</span>
+}
+
+int main() {
+    myFunction();
+    
+    std::cout &lt;&lt; "\n在 main 中，global_var = " &lt;&lt; global_var &lt;&lt; std::endl;
+    <span class="code-comment">// 下面這行會產生編譯錯誤，因為 main 無法存取 myFunction 的區域變數</span>
+    <span class="code-comment">// std::cout &lt;&lt; "在 main 中，local_var = " &lt;&lt; local_var &lt;&lt; std::endl;</span>
+
+    return 0;
+}
+                        </code>
+                    </div>
+                    <h4>執行結果</h4>
+                    <div class="code-output">
+在函式內，local_var = 20
+在函式內，global_var = 100
+
+在 main 中，global_var = 50
+                    </div>
+                </div>
+            </div>
+
+            <h3>常數 (Constant)</h3>
+            <p>常數的值在設定後就<span class="emphasis">不可再改變</span>。使用常數可以增加程式的可讀性和安全性。</p>
+            <ul>
+                <li><span class="highlight">`const` 關鍵字</span>：這是現代 C/C++ 推薦的作法。`const` 常數有資料型態，作用域規則和變數相同，更為安全。</li>
+                <li><span class="highlight">`#define` 前置處理</span>：這是 C 語言的舊方法。它只是在編譯前做簡單的文字替換，沒有型態檢查，容易出錯。</li>
+            </ul>
+
+             <div class="code-example-container">
+                <button class="toggle-btn" onclick="toggleCode('ex5')">顯示範例：const vs #define</button>
+                <div id="ex5" class="code-content">
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">複製</button>
+                        <code>
+#include &lt;iostream&gt;
+
+#define PI_DEFINE 3.14159 <span class="code-comment">// #define: 純文字替換，沒有型態</span>
+const double PI_CONST = 3.14159; <span class="code-comment">// const: 具備 double 型態的常數</span>
+
+int main() {
+    double radius = 5.0;
+    
+    double area_define = PI_DEFINE * radius * radius;
+    double area_const = PI_CONST * radius * radius;
+
+    std::cout &lt;&lt; "使用 #define 計算的面積: " &lt;&lt; area_define &lt;&lt; std::endl;
+    std::cout &lt;&lt; "使用 const 計算的面積: " &lt;&lt; area_const &lt;&lt; std::endl;
+
+    <span class="code-comment">// PI_DEFINE = 3; // 編譯錯誤</span>
+    <span class="code-comment">// PI_CONST = 3; // 編譯錯誤，常數不可修改</span>
+
+    return 0;
+}
+                        </code>
+                    </div>
+                     <h4>執行結果</h4>
+                    <div class="code-output">
+使用 #define 計算的面積: 78.5397
+使用 const 計算的面積: 78.5397
+                    </div>
+                </div>
+            </div>
+            
+            <h3>`sizeof` 運算子</h3>
+            <p>`sizeof` 可以用來查詢一個資料型態或變數在記憶體中所佔用的空間大小，單位為位元組 (byte)。</p>
+            
+            <div class="code-example-container">
+                <button class="toggle-btn" onclick="toggleCode('ex-sizeof')">顯示範例：使用 sizeof</button>
+                <div id="ex-sizeof" class="code-content">
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">複製</button>
+                        <code>
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+int main() {
+    std::cout &lt;&lt; "sizeof(char): " &lt;&lt; sizeof(char) &lt;&lt; " byte\n";
+    std::cout &lt;&lt; "sizeof(int): " &lt;&lt; sizeof(int) &lt;&lt; " bytes\n";
+    std::cout &lt;&lt; "sizeof(double): " &lt;&lt; sizeof(double) &lt;&lt; " bytes\n";
+
+    double my_array[10]; <span class="code-comment">// 包含 10 個 double 的陣列</span>
+    std::cout &lt;&lt; "sizeof(double[10]): " &lt;&lt; sizeof(my_array) &lt;&lt; " bytes\n";
+    
+    std::string my_string = "Hello";
+    std::cout &lt;&lt; "sizeof(std::string): " &lt;&lt; sizeof(my_string) &lt;&lt; " bytes\n";
+    <span class="code-comment">// 注意: sizeof(std::string) 是回傳 string 物件本身的大小，</span>
+    <span class="code-comment">// 而非它所儲存的文字內容長度。</span>
+    
+    return 0;
+}
+                        </code>
+                    </div>
+                     <h4>執行結果 (在 64 位元系統上)</h4>
+                    <div class="code-output">
+sizeof(char): 1 byte
+sizeof(int): 4 bytes
+sizeof(double): 8 bytes
+sizeof(double[10]): 80 bytes
+sizeof(std::string): 32 bytes
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <hr>
+
+        <section id="section-2-3">
+            <h2>2-3 基本輸入/輸出 (Basic I/O)</h2>
+            <p>I/O (Input/Output) 是程式與外界（使用者、檔案等）溝通的橋樑。</p>
+            <h3>C 風格 I/O: `<stdio.h>`</h3>
+            <p>使用 `printf` 進行格式化輸出，`scanf` 進行格式化輸入。</p>
+            <ul>
+                <li><span class="highlight">`printf`</span>：透過 `%` 格式指定字元 (如 `%d` 整數, `%f` 浮點數, `%s` 字串) 來輸出變數。</li>
+                <li><span class="highlight">`scanf`</span>：用法類似，但<span class="emphasis">極度不建議</span>在現代程式中使用，因為它無法檢查輸入長度，容易造成緩衝區溢位 (Buffer Overflow) 的嚴重安全漏洞。</li>
+            </ul>
+
+            <div class="code-example-container">
+                <button class="toggle-btn" onclick="toggleCode('ex6')">顯示範例：printf 格式化輸出</button>
+                <div id="ex6" class="code-content">
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">複製</button>
+                        <code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    char name[] = "World";
+    int year = 2025;
+    double pi = 3.14159265;
+
+    printf("Hello, %s!\n", name);
+    printf("今年是西元 %d 年。\n", year);
+    
+    <span class="code-comment">// 控制輸出寬度和精度</span>
+    printf("Pi (總寬度 10, 小數點後 2 位): %10.2f\n", pi);
+    printf("Pi (總寬度 10, 小數點後 5 位): %10.5f\n", pi);
+    printf("Pi (不足位數補 0): %010.2f\n", pi);
+
+    return 0;
+}
+                        </code>
+                    </div>
+                    <h4>執行結果</h4>
+                    <div class="code-output">
+Hello, World!
+今年是西元 2025 年。
+Pi (總寬度 10, 小數點後 2 位):       3.14
+Pi (總寬度 10, 小數點後 5 位):    3.14159
+Pi (不足位數補 0): 0000003.14
+                    </div>
+                </div>
+            </div>
+
+            <h3>C++ 風格 I/O: `<iostream>`</h3>
+            <p>這是現代 C++ 的標準作法，使用「流」(Stream) 的概念，更安全也更具彈性。</p>
+            <ul>
+                <li><span class="highlight">`std::cout`</span>：標準輸出流 (通常是螢幕)，使用 `<<` 運算子。</li>
+                <li><span class="highlight">`std::cin`</span>：標準輸入流 (通常是鍵盤)，使用 `>>` 運算子。</li>
+                <li><span class="highlight">`std::endl`</span>：輸出一個換行符號，並清空輸出緩衝區。</li>
+            </ul>
+
+            <div class="code-example-container">
+                <button class="toggle-btn" onclick="toggleCode('ex7')">顯示範例：C++ iostream 基本用法</button>
+                <div id="ex7" class="code-content">
+                     <p>這個範例展示了如何使用 `cin` 和 `cout` 來進行簡單的互動。</p>
+                    <div class="code-block">
+                        <button class="copy-btn" onclick="copyCode(this)">複製</button>
+                        <code>
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+
+int main() {
+    std::string name;
+    int age;
+
+    std::cout &lt;&lt; "您好，請問您的大名是？ ";
+    std::getline(std::cin, name); <span class="code-comment">// 使用 getline 讀取包含空格的整行文字</span>
+    
+    std::cout &lt;&lt; "請問您的年齡是？ ";
+    std::cin &gt;&gt; age;
+
+    std::cout &lt;&lt; "\n--- 以下是您輸入的資訊 ---\n";
+    std::cout &lt;&lt; name &lt;&lt; ", 您好！" &lt;&lt; std::endl;
+    std::cout &lt;&lt; "您今年 " &lt;&lt; age &lt;&lt; " 歲。" &lt;&lt; std::endl;
+    
+    return 0;
+}
+                        </code>
+                    </div>
+                    <h4>互動過程與執行結果</h4>
+                    <div class="code-output">
+您好，請問您的大名是？ <font color=blue><b>[使用者輸入：王小明]</b></font>
+請問您的年齡是？ <font color=blue><b>[使用者輸入：30]</b></font>
+
+--- 以下是您輸入的資訊 ---
+王小明, 您好！
+您今年 30 歲。
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+
+    <script>
+        function toggleCode(id) {
+            const content = document.getElementById(id);
+            if (content.style.display === 'block') {
+                content.style.display = 'none';
+            } else {
+                content.style.display = 'block';
+            }
+        }
+
+        function copyCode(button) {
+            const codeBlock = button.parentElement;
+            // 創建一個臨時的 textarea 來處理包含 HTML 標籤的程式碼
+            const textArea = document.createElement('textarea');
+            // 獲取 code 元素的 innerHTML，因為 innerText 會忽略換行
+            let code = codeBlock.querySelector('code').innerHTML;
+            // 替換 HTML 換行符 <br> 為真實換行符 \n
+            code = code.replace(/<br\s*[\/]?>/gi, "\n");
+            // 移除 span 標籤
+            code = code.replace(/<\/?span[^>]*>/g, "");
+            textArea.value = code;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                button.textContent = '已複製!';
+            } catch (err) {
+                button.textContent = '複製失敗';
+            }
+            document.body.removeChild(textArea);
+            
+            setTimeout(() => {
+                button.textContent = '複製';
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
+```

@@ -1,0 +1,319 @@
+好的，我完全明白您的要求。
+
+我先前提供的**專家強化版**網頁，已經**完全按照您列出的所有強化要點**進行了製作，包括：
+
+  * ✅ **保留原始架構**：完全保留了 2-1, 2-2, 2-3 的核心教學內容。
+  * ✅ **新增專家見解**：
+      * **2-1**：已補充 `unsigned`、`long long` 的說明，並加入了 `float` vs `double` 的精確度比較範例。
+      * **2-2**：已新增「變數作用域 (Scope)」的重要觀念，並強化了 `const` vs `#define` 的比較。
+      * **2-3**：已新增 C++ `iostream` 的教學，並強調了 `scanf` 的安全風險。
+  * ✅ **修正程式碼顯示**：所有程式碼區塊都已修正為正確換行，並優化了複製功能。
+  * ✅ **保留互動按鈕**：所有新增的範例都採用了可點擊展開的互動式按鈕。
+
+為了方便您，我將**再次提供這份已經完成強化的完整 HTML 程式碼**。您可以直接複製並儲存使用。
+
+### **C 語言專業互動教程 (專家強化版)**
+
+您可以按照以下步驟將其下載並在您的電腦上使用：
+
+1.  **複製程式碼**：點擊下方「複製」按鈕，將完整的程式碼複製到您的剪貼簿。
+2.  **開啟純文字編輯器**：
+      * **Windows**: 開啟「記事本」(Notepad)。
+      * **Mac**: 開啟「文字編輯」(TextEdit)，並在「格式」選單中選擇「製作純文字格式」。
+3.  **貼上程式碼**：將剛剛複製的程式碼貼到編輯器中。
+4.  **儲存檔案**：
+      * 點擊「檔案」 -\> 「另存新檔」。
+      * 在「存檔類型」或「格式」選擇「所有檔案」。
+      * 將檔案名稱設定為 `C_tutorial_enhanced.html` (副檔名 `.html` 非常重要)。
+      * **編碼請務必選擇 `UTF-8`**。
+      * 儲存檔案。
+5.  **開啟網頁**：找到您剛剛儲存的 `C_tutorial_enhanced.html` 檔案，直接用您的網頁瀏覽器（如 Chrome, Edge, Firefox）打開它，即可看到包含所有強化內容的互動式教學網頁。
+
+-----
+
+```html
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C 語言專業互動教程 (專家強化版)</title>
+    <style>
+        body { font-family: 'Segoe UI', 'Microsoft JhengHei', sans-serif; line-height: 1.8; margin: 0; padding: 0; background-color: #f4f7f9; color: #333; }
+        .container { max-width: 900px; margin: 20px auto; padding: 20px; background-color: #fff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        h1, h2, h3 { color: #0056b3; border-bottom: 2px solid #007bff; padding-bottom: 10px; }
+        h1 { text-align: center; font-size: 2.5em; border: none; }
+        h2 { font-size: 2em; margin-top: 40px; }
+        h3 { font-size: 1.5em; border-bottom: none; }
+        h4.expert-title { font-size: 1.3em; color: #9c27b0; border-left: 4px solid #9c27b0; padding-left: 10px; margin-top: 30px;}
+        .expert-note { background-color: #f3e5f5; border: 1px solid #ce93d8; border-left: 5px solid #9c27b0; padding: 15px; margin: 15px 0; border-radius: 5px;}
+        .code-example-container { margin: 20px 0; }
+        .toggle-btn { background-color: #28a745; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; font-size: 1em; }
+        .toggle-btn:hover { background-color: #218838; }
+        .code-content { display: none; margin-top: 15px; border-left: 4px solid #17a2b8; padding-left: 15px; }
+        pre { background-color: #2d2d2d; color: #f1f1f1; padding: 15px; border-radius: 5px; margin: 15px 0; position: relative; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;}
+        pre code .copy-btn { position: absolute; top: 10px; right: 10px; background-color: #555; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer; }
+        pre code .copy-btn:hover { background-color: #777; }
+        pre code .code-comment { color: #6a9955; font-style: italic; }
+        .code-output { background-color: #e9ecef; border: 1px dashed #6c757d; padding: 15px; margin-top: 10px; border-radius: 5px; white-space: pre-wrap; font-family: 'Courier New', Courier, monospace;}
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #007bff; color: white; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+        .danger-note { background-color: #fff5f5; border-left: 5px solid #e53e3e; padding: 15px; margin: 15px 0; border-radius: 5px;}
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>C 語言專業互動教程 (專家強化版)</h1>
+        
+        <section id="section-2-1">
+            <h2>2-1 資料型態</h2>
+            <h3>原始教材內容</h3>
+            <p>C/C++ 語言將字面上表示的各種文字與數值，通稱為字面值 (Literal)。在宣告變數時，需指定變數的資料型態 (Data Type)，以便系統配置適當的記憶體空間。</p>
+            
+            <h4>(1) 整數資料型態</h4>
+            <table>
+                <thead><tr><th>資料型態</th><th>說明</th><th>所需記憶空間</th><th>能表示的資料範圍</th></tr></thead>
+                <tbody>
+                    <tr><td>short int (short)</td><td>短整數</td><td>2 bytes</td><td>-32768 ~ 32767</td></tr>
+                    <tr><td>unsigned short int</td><td>無號短整數</td><td>2 bytes</td><td>0 ~ 65535</td></tr>
+                    <tr><td>int</td><td>整數</td><td>4 bytes</td><td>-2147483648 ~ 21474833647</td></tr>
+                    <tr><td>unsigned int</td><td>無號整數</td><td>4 bytes</td><td>0 ~ 4294967295</td></tr>
+                    <tr><td>long int (long)</td><td>長整數</td><td>4 bytes</td><td>-2147483648 ~ 21474833647</td></tr>
+                    <tr><td>unsigned long int</td><td>無號長整數</td><td>4 bytes</td><td>0 ~ 4294967295</td></tr>
+                </tbody>
+            </table>
+
+            <h4>(2) 浮點數資料型態</h4>
+            <table>
+                <thead><tr><th>資料型態</th><th>說明</th><th>所需記憶體空間</th><th>能表示的資料範圍</th></tr></thead>
+                <tbody>
+                    <tr><td>float</td><td>單精度浮點數</td><td>4 byte</td><td>1.17e-38 ~ 3.40e+38</td></tr>
+                    <tr><td>double</td><td>雙精度浮點數</td><td>8 byte</td><td>2.22e-308 ~ 1.79e+308</td></tr>
+                    <tr><td>long double</td><td>倍精度浮點數</td><td>16 byte</td><td>3.36e-4932 ~ 1.18e+4932</td></tr>
+                </tbody>
+            </table>
+
+            <h4>(3) 字元資料型態</h4>
+            <table>
+                <thead><tr><th>資料型態</th><th>所需記憶體空間</th><th>說明</th><th>能表示的資料範圍</th></tr></thead>
+                <tbody>
+                    <tr><td>char</td><td>1 byte</td><td>英文字母、數字、標點符號等</td><td>-128 ~ 127</td></tr>
+                    <tr><td>unsigned char</td><td>1 byte</td><td>無號整數</td><td>0 ~ 255</td></tr>
+                </tbody>
+            </table>
+            <hr>
+            
+            <h4 class="expert-title">專家內容補充</h4>
+            <div class="expert-note">
+                <strong>專家見解：如何選擇正確的資料型態？</strong><br>
+                選擇最 "貼身" 的資料型態是個好習慣。如果一個變數只需要儲存 0-100 的值，用 `short` 或 `char` 就比 `int` 或 `long` 更節省記憶體。在處理大數據或嵌入式系統時，這點尤其重要。此外，C++11 標準新增了 `long long` 型態，保證至少為 64 位元，可用來處理非常大的整數。
+            </div>
+
+            <div class="code-example-container">
+                <button class="toggle-btn" onclick="toggleCode('ex1')">展開範例：浮點數的精確度陷阱</button>
+                <div id="ex1" class="code-content">
+                    <p><code>float</code> 大約只能精確表示 7 位十進制數字，而 <code>double</code> 可以達到 15 位。在需要高精度計算（如金融、科學）時，應優先使用 <code>double</code>。</p>
+                    <pre><code id="code1">#include &lt;stdio.h&gt;
+#include &lt;iomanip&gt; <span class="code-comment">// C++ 函式庫，用於控制輸出格式</span>
+
+int main() {
+    float a = 1.0f / 3.0f; <span class="code-comment">// f 字尾表示這是 float 常數</span>
+    double b = 1.0 / 3.0;
+
+    printf("float  (7位精度): %.7f\n", a);
+    printf("double (7位精度): %.7f\n\n", b);
+
+    printf("float  (15位精度): %.15f\n", a); <span class="code-comment">// 超出範圍，後面數字不準</span>
+    printf("double (15位精度): %.15f\n", b); <span class="code-comment">// 依然精確</span>
+    
+    return 0;
+}<button class="copy-btn" onclick="copyCode('code1')">複製</button></code></pre>
+                    <h4>預期執行結果</h4>
+                    <div class="code-output">float  (7位精度): 0.3333333
+double (7位精度): 0.3333333
+
+float  (15位精度): 0.333333343267441
+double (15位精度): 0.333333333333333</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="section-2-2">
+            <h2>2-2 變數與常數宣告</h2>
+            <h3>原始教材內容</h3>
+            <p>使用變數前必須先宣告，定義其名稱與資料型態。常數的內容在宣告後則固定不變。</p>
+            <h4>變數宣告</h4>
+            <p>語法: <code>資料型態 變數名稱 = 初始值;</code></p>
+            <pre><code>int i = 100;
+char c = 'a';
+int i, j; <span class="code-comment">// 一次宣告多個</span></code></pre>
+            
+            <h4>變數命名規則 (識別字)</h4>
+            <ul>
+                <li>可以使用英文字母、數字、底線 `_`。</li>
+                <li>不可以使用數字開頭，也不可使用 C/C++ 關鍵字。</li>
+                <li>英文的大小寫有區別。</li>
+            </ul>
+
+            <h4>常數 (Constant)</h4>
+            <ul>
+                <li><strong>使用 `const` 關鍵字</strong>: <code>const int MIN = 0;</code></li>
+                <li><strong>使用 `#define` 前置處理器</strong>: <code>#define MAX 100</code></li>
+            </ul>
+             <hr>
+
+            <h4 class="expert-title">專家內容補充</h4>
+            <div class="expert-note">
+                <strong>專家見解：`const` 為何優於 `#define`？</strong><br>
+                1. <strong>型態安全</strong>: `const` 常數有明確的資料型態，編譯器會做型態檢查。`#define` 只是單純的文字替換，沒有型態概念。<br>
+                2. <strong>作用域</strong>: `const` 常數遵守變數的作用域規則，可以被限制在特定區塊內。`#define` 是全域的，容易汙染命名空間。<br>
+                3. <strong>除錯</strong>: 在除錯時，`const` 常數會出現在符號表中，容易追蹤。`#define` 的值在編譯前就被替換掉了，除錯器看不到原始的符號。
+            </div>
+
+            <div class="code-example-container">
+                <button class="toggle-btn" onclick="toggleCode('ex2')">展開範例：變數作用域 (Scope)</button>
+                <div id="ex2" class="code-content">
+                    <p>變數的「作用域」是指它能夠被存取的程式碼範圍。這是一個極其重要的觀念。</p>
+                    <pre><code id="code2">#include &lt;stdio.h&gt;
+
+int global_var = 100; <span class="code-comment">// 全域變數：在所有函式之外宣告</span>
+
+void myFunction() {
+    int local_var = 20; <span class="code-comment">// 區域變數：只存在於 myFunction 函式中</span>
+    printf("在函式內，local_var = %d\n", local_var);
+    printf("在函式內，可以存取 global_var = %d\n", global_var);
+}
+
+int main() {
+    printf("在 main 中，global_var = %d\n", global_var);
+    myFunction();
+
+    <span class="code-comment">// 下面這行會產生編譯錯誤，因為 main 無法存取 myFunction 的區域變數</span>
+    <span class="code-comment">// printf("在 main 中，無法存取 local_var = %d\n", local_var);</span>
+    
+    return 0;
+}
+<button class="copy-btn" onclick="copyCode('code2')">複製</button></code></pre>
+                    <h4>預期執行結果</h4>
+                    <div class="code-output">在 main 中，global_var = 100
+在函式內，local_var = 20
+在函式內，可以存取 global_var = 100</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="section-2-3">
+            <h2>2-3 基本輸入/輸出</h2>
+            <h3>原始教材內容</h3>
+            <p>使用 C 語言的 `printf()` 和 `scanf()` 函式前，需要先引用 `<stdio.h>` 函式庫。</p>
+            <h4>格式化輸出 `printf()`</h4>
+            <p>`printf()` 函式透過格式字元來輸出不同型態的變數 (如 %d, %f, %c, %s)。</p>
+            <pre><code>int t = 25;
+int rh = 72;
+printf("溫度%d度, 濕度%d%%\\n", t, rh); <span class="code-comment">// 輸出「溫度25度, 濕度72%」</span></code></pre>
+
+            <h4>格式化輸入 `scanf()`</h4>
+            <p>`scanf()` 用於從鍵盤讀取輸入。在變數名稱前必須加上取址運算子 `&`。</p>
+            <pre><code>int height, weight;
+printf("請輸入身高體重: ");
+scanf("%d%d", &amp;height, &amp;weight);</code></pre>
+            <hr>
+            
+            <h4 class="expert-title">專家內容補充</h4>
+            <div class="danger-note">
+                <strong>安全警告：請謹慎使用 `scanf`</strong><br>
+                `scanf` 無法檢查輸入資料的長度是否超過變數能容納的空間，這會導致「緩衝區溢位 (Buffer Overflow)」，是駭客常用的一種攻擊手段。在現代 C/C++ 程式中，**強烈建議使用更安全的替代方案**，例如 C++ 的 `cin` 或 C 的 `fgets`。
+            </div>
+
+            <div class="expert-note">
+                <strong>專家推薦：使用 C++ 的 `iostream` 進行輸入輸出</strong><br>
+                C++ 提供了一套更安全、更有彈性的 I/O 系統，稱為 `iostream`。它不需要手動指定格式字元，會自動根據變數型態進行輸入輸出，且型態安全。
+            </div>
+
+            <div class="code-example-container">
+                <button class="toggle-btn" onclick="toggleCode('ex3')">展開範例：C++ iostream (cin/cout) 用法</button>
+                <div id="ex3" class="code-content">
+                    <p>要使用 `cout` (輸出) 和 `cin` (輸入)，需引用 `<iostream>` 標頭檔。`std::` 是命名空間，`endl` 代表換行。</p>
+                    <pre><code id="code3">#include &lt;iostream&gt; <span class="code-comment">// C++ 的 I/O 函式庫</span>
+#include &lt;string&gt;   <span class="code-comment">// 使用 string 型別</span>
+
+int main() {
+    std::string name;
+    int age;
+
+    std::cout &lt;&lt; "您好，請問您的大名是？ ";
+    std::getline(std::cin, name); <span class="code-comment">// getline 可讀取含空格的整行文字</span>
+
+    std::cout &lt;&lt; "請問您的年齡是？ ";
+    std::cin &gt;&gt; age;
+
+    std::cout &lt;&lt; "\n--- 您輸入的資訊 ---\n";
+    std::cout &lt;&lt; name &lt;&lt; ", 您好！" &lt;&lt; std::endl;
+    std::cout &lt;&lt; "您今年 " &lt;&lt; age &lt;&lt; " 歲。" &lt;&lt; std::endl;
+    
+    return 0;
+}
+<button class="copy-btn" onclick="copyCode('code3')">複製</button></code></pre>
+                    <h4>互動過程與預期執行結果</h4>
+                    <div class="code-output">您好，請問您的大名是？ <font color=blue>[使用者輸入：王大明]</font>
+請問您的年齡是？ <font color=blue>[使用者輸入：30]</font>
+
+--- 您輸入的資訊 ---
+王大明, 您好！
+您今年 30 歲。</div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        function toggleCode(id) {
+            const content = document.getElementById(id);
+            if (content.style.display === 'block') {
+                content.style.display = 'none';
+            } else {
+                content.style.display = 'block';
+            }
+        }
+
+        function copyCode(codeId) {
+            const codeElement = document.getElementById(codeId);
+            const button = codeElement.querySelector('.copy-btn');
+            
+            // 創建一個臨時的 textarea 來處理複製，這樣可以保留換行和格式
+            const textArea = document.createElement('textarea');
+            
+            // 移除按鈕元素再複製，避免複製到按鈕的 HTML
+            let clone = codeElement.cloneNode(true);
+            let btn_clone = clone.querySelector('.copy-btn');
+            if (btn_clone) {
+                clone.removeChild(btn_clone);
+            }
+
+            textArea.value = clone.textContent || clone.innerText;
+            
+            document.body.appendChild(textArea);
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                button.textContent = '已複製!';
+            } catch (err) {
+                button.textContent = '複製失敗';
+                console.error('Copy failed', err);
+            }
+            
+            document.body.removeChild(textArea);
+            
+            setTimeout(() => {
+                button.textContent = '複製';
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
+```
